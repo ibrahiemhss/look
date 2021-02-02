@@ -1,0 +1,235 @@
+{
+  "asset": "asset:look/lib/di/modules/local_module.dart",
+  "summary": {
+    "injector": [],
+    "module": [
+      {
+        "name": "LocalModule",
+        "providers": [
+          {
+            "name": "provideDataConnectionChecker",
+            "kind": "method",
+            "injectedType": {
+              "lookupKey": {
+                "root": "dart:core#bool",
+                "qualifier": null
+              },
+              "isProvider": false
+            },
+            "singleton": true,
+            "asynchronous": true,
+            "dependencies": []
+          },
+          {
+            "name": "provideCheckInternet",
+            "kind": "method",
+            "injectedType": {
+              "lookupKey": {
+                "root": "asset:look/lib/data/network/check_internet/check_internet.dart#CheckInternet",
+                "qualifier": null
+              },
+              "isProvider": false
+            },
+            "singleton": true,
+            "asynchronous": false,
+            "dependencies": []
+          },
+          {
+            "name": "provideDio",
+            "kind": "method",
+            "injectedType": {
+              "lookupKey": {
+                "root": "asset:dio/lib/src/dio.dart#Dio",
+                "qualifier": null
+              },
+              "isProvider": false
+            },
+            "singleton": true,
+            "asynchronous": false,
+            "dependencies": [
+              {
+                "lookupKey": {
+                  "root": "asset:look/lib/data/sharedpref/shared_preference_helper.dart#SharedPreferenceHelper",
+                  "qualifier": null
+                },
+                "isProvider": false
+              }
+            ]
+          },
+          {
+            "name": "provideDioClient",
+            "kind": "method",
+            "injectedType": {
+              "lookupKey": {
+                "root": "asset:look/lib/data/network/dio_client.dart#DioClient",
+                "qualifier": null
+              },
+              "isProvider": false
+            },
+            "singleton": true,
+            "asynchronous": false,
+            "dependencies": [
+              {
+                "lookupKey": {
+                  "root": "asset:dio/lib/src/dio.dart#Dio",
+                  "qualifier": null
+                },
+                "isProvider": false
+              }
+            ]
+          },
+          {
+            "name": "provideRestClient",
+            "kind": "method",
+            "injectedType": {
+              "lookupKey": {
+                "root": "asset:look/lib/data/network/rest_client.dart#RestClient",
+                "qualifier": null
+              },
+              "isProvider": false
+            },
+            "singleton": true,
+            "asynchronous": false,
+            "dependencies": []
+          },
+          {
+            "name": "provideIntroApi",
+            "kind": "method",
+            "injectedType": {
+              "lookupKey": {
+                "root": "asset:look/lib/data/network/apis/intro/intro_api.dart#IntroApi",
+                "qualifier": null
+              },
+              "isProvider": false
+            },
+            "singleton": true,
+            "asynchronous": false,
+            "dependencies": [
+              {
+                "lookupKey": {
+                  "root": "asset:look/lib/data/network/dio_client.dart#DioClient",
+                  "qualifier": null
+                },
+                "isProvider": false
+              },
+              {
+                "lookupKey": {
+                  "root": "asset:look/lib/data/network/rest_client.dart#RestClient",
+                  "qualifier": null
+                },
+                "isProvider": false
+              }
+            ]
+          },
+          {
+            "name": "provideSharedPreferences",
+            "kind": "method",
+            "injectedType": {
+              "lookupKey": {
+                "root": "asset:shared_preferences/lib/shared_preferences.dart#SharedPreferences",
+                "qualifier": null
+              },
+              "isProvider": false
+            },
+            "singleton": true,
+            "asynchronous": true,
+            "dependencies": []
+          },
+          {
+            "name": "provideSharedPreferenceHelper",
+            "kind": "method",
+            "injectedType": {
+              "lookupKey": {
+                "root": "asset:look/lib/data/sharedpref/shared_preference_helper.dart#SharedPreferenceHelper",
+                "qualifier": null
+              },
+              "isProvider": false
+            },
+            "singleton": true,
+            "asynchronous": false,
+            "dependencies": []
+          },
+          {
+            "name": "provideDatabase",
+            "kind": "method",
+            "injectedType": {
+              "lookupKey": {
+                "root": "asset:sembast/lib/src/api/v2/database.dart#Database",
+                "qualifier": null
+              },
+              "isProvider": false
+            },
+            "singleton": true,
+            "asynchronous": true,
+            "dependencies": []
+          },
+          {
+            "name": "providePostDataSource",
+            "kind": "method",
+            "injectedType": {
+              "lookupKey": {
+                "root": "asset:look/lib/data/local/datasources/post/post_datasource.dart#PostDataSource",
+                "qualifier": null
+              },
+              "isProvider": false
+            },
+            "singleton": true,
+            "asynchronous": false,
+            "dependencies": []
+          },
+          {
+            "name": "provideRepository",
+            "kind": "method",
+            "injectedType": {
+              "lookupKey": {
+                "root": "asset:look/lib/data/repository.dart#Repository",
+                "qualifier": null
+              },
+              "isProvider": false
+            },
+            "singleton": true,
+            "asynchronous": false,
+            "dependencies": [
+              {
+                "lookupKey": {
+                  "root": "asset:look/lib/data/network/apis/intro/intro_api.dart#IntroApi",
+                  "qualifier": null
+                },
+                "isProvider": false
+              },
+              {
+                "lookupKey": {
+                  "root": "asset:look/lib/data/sharedpref/shared_preference_helper.dart#SharedPreferenceHelper",
+                  "qualifier": null
+                },
+                "isProvider": false
+              },
+              {
+                "lookupKey": {
+                  "root": "asset:look/lib/data/local/datasources/post/post_datasource.dart#PostDataSource",
+                  "qualifier": null
+                },
+                "isProvider": false
+              },
+              {
+                "lookupKey": {
+                  "root": "asset:look/lib/data/network/check_internet/check_internet.dart#CheckInternet",
+                  "qualifier": null
+                },
+                "isProvider": false
+              },
+              {
+                "lookupKey": {
+                  "root": "asset:look/lib/data/firebase/firebase_helper.dart#FirebaseHelper",
+                  "qualifier": null
+                },
+                "isProvider": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "injectable": []
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "971955231584",
+    "project_id": "look-4f2ec",
+    "storage_bucket": "look-4f2ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971955231584:android:5729ac528f448cbf7f1c05",
+        "android_client_info": {
+          "package_name": "com.look.app.shopping.ps.look"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971955231584-65ggonnriigfd00al0ualcqj63st13ma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADRwOwyJgu5rBLI4jhPIJMgf7fJIq12tA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971955231584-65ggonnriigfd00al0ualcqj63st13ma.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "971955231584-hf99ba2gou95f8tlje88bsos8upa3o84.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lookAppShopping.LOOKPS"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

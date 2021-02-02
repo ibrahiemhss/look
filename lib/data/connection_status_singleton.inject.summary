@@ -1,0 +1,8 @@
+{
+  "asset": "asset:look/lib/data/connection_status_singleton.dart",
+  "summary": {
+    "injector": [],
+    "module": [],
+    "injectable": []
+  }
+}
