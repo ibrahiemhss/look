@@ -1,9 +1,10 @@
 import 'dart:async';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:look/services/notifications_service.dart';
 import 'package:look/data/sharedpref/shared_preference_helper.dart';
 import 'package:look/models/notifications/fcm_notification_model.dart';
+import 'package:look/services/notifications_service.dart';
 
 class FirebaseHelper {
 // FirebaseMessaging instance
@@ -11,9 +12,10 @@ class FirebaseHelper {
   final SharedPreferenceHelper _sharedPreferenceHelper;
 
   // injecting dio instance
-  FirebaseHelper(this._firebaseMessaging,this._sharedPreferenceHelper);
+  FirebaseHelper(this._firebaseMessaging, this._sharedPreferenceHelper);
 
-  Future<FcmMessage> config(BuildContext context,NotificationsService notificationsService) {
+  Future<FcmMessage> config(
+      BuildContext context, NotificationsService notificationsService) {
     /*_firebaseMessaging.requestNotificationPermissions(
         const IosNotificationSettings(sound: true, badge: true, alert: true));
     _firebaseMessaging.onIosSettingsRegistered
@@ -67,5 +69,4 @@ class FirebaseHelper {
       final dynamic notification = message['notification'];
     }
   }
-
 }

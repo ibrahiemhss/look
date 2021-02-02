@@ -54,6 +54,7 @@ class AppComponent$Injector implements _i1.AppComponent {
   }
 
   _i17.MyApp _createMyApp() => _i17.MyApp();
+
   _i13.Repository _createRepository() =>
       _singletonRepository ??= _localModule.provideRepository(
           _createIntroApi(),
@@ -61,29 +62,40 @@ class AppComponent$Injector implements _i1.AppComponent {
           _createPostDataSource(),
           _createCheckInternet(),
           _createFirebaseHelper());
+
   _i8.IntroApi _createIntroApi() => _singletonIntroApi ??=
       _localModule.provideIntroApi(_createDioClient(), _createRestClient());
+
   _i6.DioClient _createDioClient() =>
       _singletonDioClient ??= _localModule.provideDioClient(_createDio());
+
   _i5.Dio _createDio() => _singletonDio ??=
       _localModule.provideDio(_createSharedPreferenceHelper());
+
   _i4.SharedPreferenceHelper _createSharedPreferenceHelper() =>
       _singletonSharedPreferenceHelper ??=
           _firebaseModule.provideSharedPreferenceHelper();
+
   _i7.RestClient _createRestClient() =>
       _singletonRestClient ??= _localModule.provideRestClient();
+
   _i9.PostDataSource _createPostDataSource() =>
       _singletonPostDataSource ??= _localModule.providePostDataSource();
+
   _i10.CheckInternet _createCheckInternet() =>
       _singletonCheckInternet ??= _localModule.provideCheckInternet();
+
   _i12.FirebaseHelper _createFirebaseHelper() =>
       _singletonFirebaseHelper ??= _firebaseModule.provideFirebaseHelper(
           _createFirebaseMessaging(), _createSharedPreferenceHelper());
+
   _i11.FirebaseMessaging _createFirebaseMessaging() =>
       _singletonFirebaseMessaging ??=
           _firebaseModule.provideFirebaseMessaging();
+
   @override
   _i17.MyApp get app => _createMyApp();
+
   @override
   _i13.Repository getRepository() => _createRepository();
 }

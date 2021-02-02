@@ -3,7 +3,6 @@ import 'package:look/ui/intro/intro_slider_screen.dart';
 import 'package:look/ui/main/main_screen.dart';
 import 'package:look/ui/route/route_screen.dart';
 
-import 'main.dart';
 import 'ui/splash/splash.dart';
 
 class Routes {
@@ -18,9 +17,9 @@ class Routes {
   static const String main = '/main';
 
   static routes({data}) => <String, WidgetBuilder>{
-    intro: (BuildContext context) => IntroScreen(),
-    routeScreen: (BuildContext context) => ChangeRouteScreen(),
-    splash: (BuildContext context) => SplashScreen(),
-    main: (BuildContext context) => MainPagesScreen(),
-  };
+        intro: (BuildContext context) => IntroScreen(),
+        routeScreen: (BuildContext context) => ChangeRouteScreen(),
+        splash: (BuildContext context) => SplashScreen(),
+        main: (BuildContext context) => MainPagesScreen(),
+      };
 }

@@ -1,11 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:look/constants/assets.dart';
 import 'package:look/constants/colors/colors.dart';
 import 'package:look/constants/dimens.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../routes.dart';
 

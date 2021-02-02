@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:look/constants/assets.dart';
 import 'package:look/data/repository.dart';
@@ -21,10 +19,10 @@ abstract class _IntroStore with Store {
   final ErrorStore errorStore = ErrorStore();
 
   // constructor:---------------------------------------------------------------
-  _IntroStore(Repository repository)
-      : this._repository = repository {
+  _IntroStore(Repository repository) : this._repository = repository {
     init();
   }
+
   // store variables:-----------------------------------------------------------
   static ObservableFuture<IntroDataList> emptyIntroDataResponse =
       ObservableFuture.value(null);
@@ -52,7 +50,7 @@ abstract class _IntroStore with Store {
   bool get firstEnter => _firstEnter;
 
   @computed
-  List<Slide> get  slides =>  _slides;
+  List<Slide> get slides => _slides;
 
   // actions:-------------------------------------------------------------------
   @action
@@ -77,8 +75,7 @@ abstract class _IntroStore with Store {
           //title: "عنوان الشاشه الاولي",
 
           //subTitle:"عنوان صغير الشاشه الاولي",
-          description: data.introDataList[0].screen1 ??
-              "",
+          description: data.introDataList[0].screen1 ?? "",
           //pathImage: "images/photo_school.png",
           centerWidget: Image.asset(Assets.splash_1),
           colorBegin: Color(0xffFFFFFF),
@@ -88,18 +85,15 @@ abstract class _IntroStore with Store {
           //onImagePress: () {},
         ),
       );
-      _slides.add(
-          new Slide(
-            backgroundColor: Color(0xFF21B6C9),
-            //title: "عنوان الشاشه الثانيه",
-            description: data.introDataList[0].screen2 ??
-                "",
-            //pathImage: "images/photo_museum.png",
-            colorBegin: Color(0xffFFFFFF),
-            colorEnd: Color(0xffE8EAF6),
-            centerWidget: Image.asset(Assets.splash_2),
-          )
-      );
+      _slides.add(new Slide(
+        backgroundColor: Color(0xFF21B6C9),
+        //title: "عنوان الشاشه الثانيه",
+        description: data.introDataList[0].screen2 ?? "",
+        //pathImage: "images/photo_museum.png",
+        colorBegin: Color(0xffFFFFFF),
+        colorEnd: Color(0xffE8EAF6),
+        centerWidget: Image.asset(Assets.splash_2),
+      ));
       this.introDataList = data;
     }).catchError((error) {
       errorStore.errorMessage = DioErrorUtil.handleError(error);
@@ -107,10 +101,10 @@ abstract class _IntroStore with Store {
   }
 
   @action
-  Future getInter() async{
+  Future getInter() async {
     _repository?.isFirstInter?.then((val) {
       if (val != null) {
-        _firstEnter=val;
+        _firstEnter = val;
       }
     });
   }

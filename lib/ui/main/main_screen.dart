@@ -223,12 +223,12 @@ class _MainPagesScreenState extends State<MainPagesScreen>
             if (webHistory.currentIndex <= 1) {
               // then it means that we are on the first page
               // so we can exit
-             // return true;
+              // return true;
             }
             // context.showLoaderOverlay();
             _webViewStore.webView.goBack();
             return false;
-          }else{
+          } else {
             return true;
           }
         }

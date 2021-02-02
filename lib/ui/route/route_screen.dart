@@ -1,14 +1,9 @@
-import 'package:look/services/notifications_service.dart';
-import 'package:look/ui/intro/intro_slider_screen.dart';
-import 'package:look/ui/main/main_screen.dart';
-import 'package:look/ui/splash/splash.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:look/models/notifications/fcm_notification_model.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:look/services/notifications_service.dart';
 import 'package:look/stores/firebase/firebase_store.dart';
-import 'package:look/stores/firebase/firebase_store.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:look/data/firebase/constants/firebase_constants.dart';
+import 'package:look/ui/intro/intro_slider_screen.dart';
 import 'package:provider/provider.dart';
 
 final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
@@ -85,19 +80,21 @@ class _ChangeRouteScreenState extends State<ChangeRouteScreen>
   NotificationsService _notificationsService;
 
   FcmMessage _fcmMessage;
+
   @override
   void didChangeDependencies() {
     _firebaseStore = Provider.of<FirebaseStore>(context);
     _notificationsService = Provider.of<NotificationsService>(context);
     if (!_firebaseStore.loading != null) {
-      _firebaseStore.getMessage(context,_notificationsService);
-      print("================onMessage====ChangeRouteScreen=======:\n ${_firebaseStore.fcmMessage??""}");
+      _firebaseStore.getMessage(context, _notificationsService);
+      print(
+          "================onMessage====ChangeRouteScreen=======:\n ${_firebaseStore.fcmMessage ?? ""}");
     }
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
-    return  IntroScreen();
+    return IntroScreen();
   }
 }

@@ -1,20 +1,15 @@
 import 'package:data_connection_checker/data_connection_checker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:look/data/network/constants/endpoints.dart';
-import 'package:mobx/mobx.dart';
 import 'package:look/data/repository.dart';
 import 'package:look/stores/error/error_store.dart';
+import 'package:mobx/mobx.dart';
 
 part 'web_view_store.g.dart';
 
 class WebViewStore = _WebViewStore with _$WebViewStore;
-enum WebViewConnectionState {
-  none,
-  waiting,
-  active,
-  done
-}
+enum WebViewConnectionState { none, waiting, active, done }
+
 abstract class _WebViewStore with Store {
   final String TAG = "_WebViewStore";
   List<ReactionDisposer> _disposers;
@@ -26,6 +21,7 @@ abstract class _WebViewStore with Store {
   final ErrorStore errorStore = ErrorStore();
 
   var _webViewConnectionState = WebViewConnectionState.none;
+
   // constructor:---------------------------------------------------------------
   _WebViewStore(Repository repository) : this._repository = repository {
     init();
@@ -36,7 +32,7 @@ abstract class _WebViewStore with Store {
   String _url = Endpoints.webVieUrl;
 
   @observable
- bool _loadingUrl = false;
+  bool _loadingUrl = false;
 
   @observable
   bool _addedNewUrl = false;
@@ -48,33 +44,40 @@ abstract class _WebViewStore with Store {
   bool _connectedInternet = true;
   @observable
   InAppWebViewController _webView;
+
   // store variables:-----------------------------------------------------------
-  static ObservableFuture<String> emptyUrl =
-  ObservableFuture.value(null);
+  static ObservableFuture<String> emptyUrl = ObservableFuture.value(null);
 
   @observable
-  ObservableFuture<String> fetchUrlFuture =
-  ObservableFuture<String>(emptyUrl);
+  ObservableFuture<String> fetchUrlFuture = ObservableFuture<String>(emptyUrl);
 
   @computed
   String get url => _url;
 
   @computed
   bool get addedNewUrl => _addedNewUrl;
+
   @computed
   String get prevUrl => _prevUrl;
+
   @computed
   bool get loadingError => _loadingError;
+
   @computed
   WebViewConnectionState get getConnectionState => _webViewConnectionState;
+
   @computed
   bool get loadingUrl => _loadingUrl;
+
   @computed
   bool get connectedInternet => _connectedInternet;
+
   @computed
   bool get loading => fetchUrlFuture.status == FutureStatus.pending;
+
   @computed
   InAppWebViewController get webView => _webView;
+
   // actions:-------------------------------------------------------------------
   @action
   void initInAppWebViewController(InAppWebViewController webView) {
@@ -85,22 +88,26 @@ abstract class _WebViewStore with Store {
   Future setConnectionStatus(bool value) {
     _connectedInternet = value;
   }
+
   // actions:-------------------------------------------------------------------
 
   @action
   Future setAddedNewUrl(bool value) {
     _addedNewUrl = value;
   }
+
   @action
   Future setPrevUrl(String value) {
     _prevUrl = value;
   }
+
   @action
   Future changeUrl(String value) async {
     _url = value;
-    _loadingUrl=true;
+    _loadingUrl = true;
     await _repository?.saveUrl(value);
   }
+
   // actions:-------------------------------------------------------------------
   @action
   void chektInternetConnection() {
@@ -119,20 +126,22 @@ abstract class _WebViewStore with Store {
           _connectedInternet = false;
       }
     });
-
   }
+
   // actions:-------------------------------------------------------------------
   @action
   void setLoadingError(bool value) {
     print("internter status ======================== $value");
     _loadingError = value;
   }
+
   // actions:-------------------------------------------------------------------
   @action
   void setLoadingUrl(bool value) {
     print("LoadingUrl ======================== $value");
-    _loadingUrl=value;
+    _loadingUrl = value;
   }
+
   // actions:-------------------------------------------------------------------
   @action
   Future getSavedUrl() async {
@@ -141,12 +150,11 @@ abstract class _WebViewStore with Store {
     fetchUrlFuture = ObservableFuture(future);
     future?.then((value) {
       if (value != null) {
-        _loadingUrl=false;
+        _loadingUrl = false;
         _url = value;
       }
     });
   }
-
 
   // general:-------------------------------------------------------------------
   void init() async {
@@ -154,7 +162,7 @@ abstract class _WebViewStore with Store {
     _repository?.getUrl?.then((url) {
       if (url != null) {
         _url = url;
-        _loadingUrl=false;
+        _loadingUrl = false;
       }
     });
   }

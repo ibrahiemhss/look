@@ -17,7 +17,7 @@ class FirebaseModule extends PreferenceModule {
   @provide
   @singleton
   FirebaseMessaging provideFirebaseMessaging() {
-    final firebaseMessaging= FirebaseMessaging();
+    final firebaseMessaging = FirebaseMessaging();
     return firebaseMessaging;
   }
 
@@ -26,6 +26,7 @@ class FirebaseModule extends PreferenceModule {
   /// Calling it multiple times will return the same instance.
   @provide
   @singleton
-  FirebaseHelper provideFirebaseHelper(FirebaseMessaging firebaseMessaging,SharedPreferenceHelper sharedPrefHelper) => FirebaseHelper(firebaseMessaging,sharedPrefHelper);
-
+  FirebaseHelper provideFirebaseHelper(FirebaseMessaging firebaseMessaging,
+          SharedPreferenceHelper sharedPrefHelper) =>
+      FirebaseHelper(firebaseMessaging, sharedPrefHelper);
 }

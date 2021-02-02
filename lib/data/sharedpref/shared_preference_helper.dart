@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'constants/preferences.dart';
@@ -53,6 +54,7 @@ class SharedPreferenceHelper {
       preference.remove(Preferences.fcm_token);
     });
   }
+
   // Theme:------------------------------------------------------
   Future<bool> get isDarkMode {
     return _sharedPreference.then((prefs) {
@@ -65,6 +67,7 @@ class SharedPreferenceHelper {
       return prefs.setBool(Preferences.is_dark_mode, value);
     });
   }
+
   // Language:---------------------------------------------------
   Future<String> get currentPageTitle {
     return _sharedPreference.then((prefs) {
@@ -77,11 +80,13 @@ class SharedPreferenceHelper {
       return prefs.setString(Preferences.currentPageTitle, title);
     });
   }
+
   Future<void> setFirstInter(bool value) {
     return _sharedPreference.then((prefs) {
       return prefs.setBool(Preferences.first_inter, value);
     });
   }
+
   Future<bool> get isFirstInter {
     return _sharedPreference.then((prefs) {
       return prefs.getBool(Preferences.first_inter);
@@ -100,6 +105,7 @@ class SharedPreferenceHelper {
       return prefs.setString(Preferences.current_language, language);
     });
   }
+
   // Url:---------------------------------------------------
   Future<String> get currentUrl {
     return _sharedPreference.then((prefs) {
@@ -121,7 +127,6 @@ class SharedPreferenceHelper {
   }
 
   Future<void> setInternetStatus(bool status) {
-
     return _sharedPreference.then((prefs) {
       return prefs.setBool(Preferences.Connected, status);
     });

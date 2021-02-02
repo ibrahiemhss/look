@@ -1,6 +1,6 @@
-import 'package:mobx/mobx.dart';
 import 'package:look/data/repository.dart';
 import 'package:look/stores/error/error_store.dart';
+import 'package:mobx/mobx.dart';
 
 part 'navigation_store.g.dart';
 

@@ -1,5 +1,5 @@
-import 'package:look/data/sharedpref/shared_preference_helper.dart';
 import 'package:inject/inject.dart';
+import 'package:look/data/sharedpref/shared_preference_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @module

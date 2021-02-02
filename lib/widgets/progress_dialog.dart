@@ -20,7 +20,7 @@ ProgressDialogType _progressDialogType;
 bool _barrierDismissible = true, _showLogs = false;
 
 TextStyle _progressTextStyle = TextStyle(
-    color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.w400),
+        color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.w400),
     _messageStyle = TextStyle(
         color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.w600);
 
@@ -39,10 +39,10 @@ class ProgressDialog {
 
   ProgressDialog(BuildContext context,
       {ProgressDialogType type,
-        bool isDismissible,
-        bool showLogs,
-        TextDirection textDirection,
-        Widget customBody}) {
+      bool isDismissible,
+      bool showLogs,
+      TextDirection textDirection,
+      Widget customBody}) {
     _context = context;
     _progressDialogType = type ?? ProgressDialogType.Normal;
     _barrierDismissible = isDismissible ?? true;
@@ -53,19 +53,19 @@ class ProgressDialog {
 
   void style(
       {Widget child,
-        double progress,
-        double maxProgress,
-        String message,
-        Widget progressWidget,
-        Color backgroundColor,
-        TextStyle progressTextStyle,
-        TextStyle messageTextStyle,
-        double elevation,
-        TextAlign textAlign,
-        double borderRadius,
-        Curve insetAnimCurve,
-        EdgeInsets padding,
-        Alignment progressWidgetAlignment}) {
+      double progress,
+      double maxProgress,
+      String message,
+      Widget progressWidget,
+      Color backgroundColor,
+      TextStyle progressTextStyle,
+      TextStyle messageTextStyle,
+      double elevation,
+      TextAlign textAlign,
+      double borderRadius,
+      Curve insetAnimCurve,
+      EdgeInsets padding,
+      Alignment progressWidgetAlignment}) {
     if (_isShowing) return;
     if (_progressDialogType == ProgressDialogType.Download) {
       _progress = progress ?? _progress;
@@ -89,11 +89,11 @@ class ProgressDialog {
 
   void update(
       {double progress,
-        double maxProgress,
-        String message,
-        Widget progressWidget,
-        TextStyle progressTextStyle,
-        TextStyle messageTextStyle}) {
+      double maxProgress,
+      String message,
+      Widget progressWidget,
+      TextStyle progressTextStyle,
+      TextStyle messageTextStyle}) {
     if (_progressDialogType == ProgressDialogType.Download) {
       _progress = progress ?? _progress;
     }
@@ -147,7 +147,7 @@ class ProgressDialog {
                   elevation: _dialogElevation,
                   shape: RoundedRectangleBorder(
                       borderRadius:
-                      BorderRadius.all(Radius.circular(_borderRadius))),
+                          BorderRadius.all(Radius.circular(_borderRadius))),
                   child: _dialog),
             );
           },
@@ -199,21 +199,20 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
-
-    return   Container(
-         height: 200,
-          width: 200,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: ExactAssetImage('assets/gif/loading.gif'),
-              fit: BoxFit.contain,
-            ), //DecorationImage
-          ),
-          child: Container(
-              height: 100,
-              width: 100,
-             child:Image.asset('assets/icon/ic_launcher_round.png'),
-          ),//BoxDecoration
+    return Container(
+      height: 200,
+      width: 200,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: ExactAssetImage('assets/gif/loading.gif'),
+          fit: BoxFit.contain,
+        ), //DecorationImage
+      ),
+      child: Container(
+        height: 100,
+        width: 100,
+        child: Image.asset('assets/icon/ic_launcher_round.png'),
+      ), //BoxDecoration
     );
   }
 }

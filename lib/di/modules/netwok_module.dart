@@ -1,4 +1,6 @@
 import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:dio/dio.dart';
+import 'package:inject/inject.dart';
 import 'package:look/data/network/apis/intro/intro_api.dart';
 import 'package:look/data/network/check_internet/check_internet.dart';
 import 'package:look/data/network/constants/endpoints.dart';
@@ -7,8 +9,6 @@ import 'package:look/data/network/rest_client.dart';
 import 'package:look/data/sharedpref/constants/preferences.dart';
 import 'package:look/data/sharedpref/shared_preference_helper.dart';
 import 'package:look/di/modules/preference_module.dart';
-import 'package:dio/dio.dart';
-import 'package:inject/inject.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @module
@@ -23,21 +23,22 @@ class NetworkModule extends PreferenceModule {
   NetworkModule() {
     _isConnected = provideDataConnectionChecker();
   }
+
   @provide
   @singleton
   @asynchronous
-  Future<bool> provideDataConnectionChecker() async{
-   return DataConnectionChecker().hasConnection;
+  Future<bool> provideDataConnectionChecker() async {
+    return DataConnectionChecker().hasConnection;
   }
 
   @provide
   @singleton
-  CheckInternet provideCheckInternet(){
+  CheckInternet provideCheckInternet() {
     _isConnected.then((value) {
       return CheckInternet(value);
-
     });
   }
+
   // DI Providers:--------------------------------------------------------------
   /// A singleton dio provider.
   ///

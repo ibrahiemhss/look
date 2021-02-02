@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:look/data/firebase/constants/firebase_constants.dart';
 import 'package:look/data/network/constants/endpoints.dart';
 import 'package:look/data/network/dio_client.dart';
 import 'package:look/data/network/rest_client.dart';
 import 'package:look/models/notifications/fcm_notification_model.dart';
-import 'package:look/data/firebase/constants/firebase_constants.dart';
 
 class FirebaseApi {
   // dio instance
@@ -21,17 +21,18 @@ class FirebaseApi {
   Future<FcmMessage> sendMessage(Map<String, dynamic> message) async {
     try {
       //, {Map headers, body, encoding}
-      final res = await _restClient.post(Endpoints.fcmUrl,
+      final res = await _restClient.post(
+        Endpoints.fcmUrl,
         headers: <String, String>{
-        'Content-Type': 'application/json',
-        'Authorization': 'key=${firebaseConstants.serverToken}',
-      },
+          'Content-Type': 'application/json',
+          'Authorization': 'key=${firebaseConstants.serverToken}',
+        },
         body: jsonEncode(message),
       );
 
-     // final Completer<Map<String, dynamic>> completer =
-     // Completer<Map<String, dynamic>>();
-     // return FcmMessage.fromJson(await completer.future,firebaseConstants.onSend);
+      // final Completer<Map<String, dynamic>> completer =
+      // Completer<Map<String, dynamic>>();
+      // return FcmMessage.fromJson(await completer.future,firebaseConstants.onSend);
     } catch (e) {
       print(e.toString());
       throw e;

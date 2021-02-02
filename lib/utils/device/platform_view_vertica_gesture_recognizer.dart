@@ -21,7 +21,8 @@ class PlatformViewVerticalGestureRecognizer
 
       if (dy > dx && dy > kTouchSlop) {
         // vertical drag - accept
-        print("*************** scroll position dy= ${dy}*************** x=${dx}");
+        print(
+            "*************** scroll position dy= ${dy}*************** x=${dx}");
 
         resolve(GestureDisposition.accepted);
         _dragDistance = Offset.zero;

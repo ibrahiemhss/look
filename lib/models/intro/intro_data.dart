@@ -10,19 +10,20 @@ class IntroData {
   });
 
   factory IntroData.fromMap(Map<String, dynamic> json) => IntroData(
-    splash: json["splash"],
-    screen1: json["screen1"],
-    screen2: json["screen2"],
-  );
-  factory IntroData.fromJson(Map<String, dynamic> json) => IntroData(
-    splash: json["splash"],
-    screen1: json["screen1"],
-    screen2: json["screen2"],
-  );
-  Map<String, dynamic> toMap() => {
-    "splash": splash,
-    "screen1": screen1,
-    "screen2": screen2,
-  };
+        splash: json["splash"],
+        screen1: json["screen1"],
+        screen2: json["screen2"],
+      );
 
+  factory IntroData.fromJson(Map<String, dynamic> json) => IntroData(
+        splash: json["splash"],
+        screen1: json["screen1"],
+        screen2: json["screen2"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "splash": splash,
+        "screen1": screen1,
+        "screen2": screen2,
+      };
 }

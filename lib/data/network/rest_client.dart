@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 import 'exceptions/network_exceptions.dart';
 
 class RestClient {
-
   // instantiate json decoder for json serialization
   final JsonDecoder _decoder = JsonDecoder();
 

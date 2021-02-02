@@ -23,7 +23,6 @@
 import 'package:flutter/material.dart';
 
 import 'colors/colors.dart';
-import 'font_family.dart';
 
 final ThemeData themeData = new ThemeData(
     textTheme: TextTheme(

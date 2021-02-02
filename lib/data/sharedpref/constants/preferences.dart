@@ -10,6 +10,4 @@ class Preferences {
   static const String currentPageTitle = "currentPageTitle";
   static const String Url = "url";
   static const String Connected = "connected";
-
-
 }

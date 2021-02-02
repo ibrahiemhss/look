@@ -1,19 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:floading/floading.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:look/models/notifications/fcm_notification_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:look/models/notifications/fcm_notification_model.dart';
 import 'package:look/stores/web_view/web_view_store.dart';
 import 'package:oktoast/oktoast.dart';
-
-import '../routes.dart';
 
 enum NOTIFICATION_TYPE { primary, info, success, danger, warning }
 
 class NotificationsService {
-
   NotificationsService();
+
   Color _getColorForType(NOTIFICATION_TYPE type) {
     switch (type) {
       case NOTIFICATION_TYPE.info:
@@ -80,26 +78,26 @@ class NotificationsService {
   }
 
   notify({
-      @required  String title,
-      @required String body,
-     // @required  IconData icon,
-      //@required  int timeout,
-      }) {
+    @required String title,
+    @required String body,
+    // @required  IconData icon,
+    //@required  int timeout,
+  }) {
     this._notify(
       title: title,
       message: body,
       //icon: icon,
       type: NOTIFICATION_TYPE.primary,
-     // timeout: timeout,
+      // timeout: timeout,
     );
   }
 
   notifyInfo(
-      String message, {
-        String title,
-        IconData icon,
-        int timeout,
-      }) {
+    String message, {
+    String title,
+    IconData icon,
+    int timeout,
+  }) {
     this._notify(
       title: title,
       message: message,
@@ -110,11 +108,11 @@ class NotificationsService {
   }
 
   notifySuccess(
-      String message, {
-        String title,
-        IconData icon,
-        int timeout,
-      }) {
+    String message, {
+    String title,
+    IconData icon,
+    int timeout,
+  }) {
     this._notify(
       title: title,
       message: message,
@@ -125,10 +123,10 @@ class NotificationsService {
   }
 
   notifyWarning(
-      String message, {
-        String title,
-        int timeout,
-      }) {
+    String message, {
+    String title,
+    int timeout,
+  }) {
     this._notify(
       title: title,
       message: message,
@@ -139,10 +137,10 @@ class NotificationsService {
   }
 
   notifyDanger(
-      String message, {
-        String title,
-        int timeout,
-      }) {
+    String message, {
+    String title,
+    int timeout,
+  }) {
     this._notify(
       title: title,
       message: message,
@@ -153,10 +151,10 @@ class NotificationsService {
   }
 
   notifyError(
-      String message, {
-        String title,
-        int timeout,
-      }) {
+    String message, {
+    String title,
+    int timeout,
+  }) {
     this.notifyDanger(
       message,
       title: title,
@@ -164,11 +162,11 @@ class NotificationsService {
     );
   }
 
-  void navigateToItemDetail(InAppWebViewController webView,WebViewStore webViewStore,BuildContext context,FcmMessage fcmMessage) {
-
-    if(fcmMessage.type=="IMAGE"){
-      showItemDialog(webView,webViewStore,context, fcmMessage);
-    }else if(fcmMessage.type=="URL"){
+  void navigateToItemDetail(InAppWebViewController webView,
+      WebViewStore webViewStore, BuildContext context, FcmMessage fcmMessage) {
+    if (fcmMessage.type == "IMAGE") {
+      showItemDialog(webView, webViewStore, context, fcmMessage);
+    } else if (fcmMessage.type == "URL") {
       FLoading.show(
         context,
         loading: Image.asset(
@@ -182,18 +180,18 @@ class NotificationsService {
       webViewStore.setPrevUrl("http://meez.shop/");
       webViewStore.setLoadingUrl(true);
       webViewStore.changeUrl(fcmMessage.url);
-      webViewStore.webView.loadUrl(url:fcmMessage.url);
-    }else{
-
-    }
+      webViewStore.webView.loadUrl(url: fcmMessage.url);
+    } else {}
   }
 
   //------------------------------------------------------------------------------
-  void showItemDialog(InAppWebViewController webView,WebViewStore webViewStore,BuildContext context,FcmMessage fcmMessage) {
+  void showItemDialog(InAppWebViewController webView, WebViewStore webViewStore,
+      BuildContext context, FcmMessage fcmMessage) {
     try {
       showDialog<bool>(
         context: context,
-        builder: (_) => _buildDialog(webView,webViewStore,context, fcmMessage),
+        builder: (_) =>
+            _buildDialog(webView, webViewStore, context, fcmMessage),
       ).then((bool shouldNavigate) {
         if (shouldNavigate == true) {}
       });
@@ -203,11 +201,11 @@ class NotificationsService {
     }
   }
 
-  Widget _buildDialog(InAppWebViewController webView,WebViewStore webViewStore,
+  Widget _buildDialog(InAppWebViewController webView, WebViewStore webViewStore,
       BuildContext context, FcmMessage fcmMessage) {
     return Theme(
       data:
-      Theme.of(context).copyWith(dialogBackgroundColor: Colors.transparent),
+          Theme.of(context).copyWith(dialogBackgroundColor: Colors.transparent),
       child: AlertDialog(
         content: Column(
           children: <Widget>[
@@ -238,89 +236,97 @@ class NotificationsService {
                                         fontFamily: AppTheme.fontName,
                                         fontWeight: FontWeight.w700,),),),
                           ),*/
-                  fcmMessage.senderName==""||fcmMessage.senderName==null?
-                  Container():
+                  fcmMessage.senderName == "" || fcmMessage.senderName == null
+                      ? Container()
+                      : Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            color: Colors.white,
+                            child: Text(
+                              fcmMessage.senderName ?? "",
+                              style: Theme.of(context).textTheme.subtitle1,
+                            ),
+                          ),
+                        ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       color: Colors.white,
                       child: Text(
-                        fcmMessage.senderName??"",
-                        style: Theme.of(context).textTheme.subtitle1,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      color: Colors.white,
-                      child: Text(
-                         fcmMessage.body??"New Message",
+                        fcmMessage.body ?? "New Message",
                         style: Theme.of(context).textTheme.subtitle2,
                       ),
                     ),
                   ),
-
-                  fcmMessage.type!="IMAGE"?Container():
-                   Container(
-                      height: 150,
-                      width: 150,
-                      color: Colors.white,
-                      child:CachedNetworkImage(
-                        imageUrl: fcmMessage.image,
-                        imageBuilder: (context, imageProvider) => Container(
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.cover,
-                                colorFilter:
-                                ColorFilter.mode(Colors.red, BlendMode.colorBurn)),
+                  fcmMessage.type != "IMAGE"
+                      ? Container()
+                      : Container(
+                          height: 150,
+                          width: 150,
+                          color: Colors.white,
+                          child: CachedNetworkImage(
+                            imageUrl: fcmMessage.image,
+                            imageBuilder: (context, imageProvider) => Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: imageProvider,
+                                    fit: BoxFit.cover,
+                                    colorFilter: ColorFilter.mode(
+                                        Colors.red, BlendMode.colorBurn)),
+                              ),
+                            ),
+                            placeholder: (context, url) =>
+                                CircularProgressIndicator(),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
                           ),
                         ),
-                        placeholder: (context, url) => CircularProgressIndicator(),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
-                      ),
-                    ),
-
-                   Padding(
+                  Padding(
                     padding: const EdgeInsets.all(2.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        fcmMessage.type!="URL"?Container(): Container(
-                          width: MediaQuery.of(context).size.width / 4.3,
-                          child: FlatButton(
-                            color: Colors.grey,
-                            child: Text(
-                              "open",
-                              style: TextStyle(
-                                  fontSize: 14.0, color: Colors.white),
-                            ),
-                            onPressed: () {
-                              FLoading.show(
-                                context,
-                                loading: Image.asset(
-                                  "assets/gif/loading.gif",
-                                  width: 100,
-                                  height: 100,
-                                ),
-                                color: Colors.grey[300],
-                              );
-                              webViewStore.setAddedNewUrl(true);
-                              webViewStore.setPrevUrl("http://meez.shop/");
-                              webViewStore.setLoadingUrl(true);
-                              webViewStore.changeUrl(fcmMessage.url);
-                              webViewStore.webView.loadUrl(url:fcmMessage.url);
-                              Navigator.pop(context, false);
-                              /*Navigator.pushNamed(
+                        fcmMessage.type != "URL"
+                            ? Container()
+                            : Container(
+                                width: MediaQuery.of(context).size.width / 4.3,
+                                child: FlatButton(
+                                  color: Colors.grey,
+                                  child: Text(
+                                    "open",
+                                    style: TextStyle(
+                                        fontSize: 14.0, color: Colors.white),
+                                  ),
+                                  onPressed: () {
+                                    FLoading.show(
+                                      context,
+                                      loading: Image.asset(
+                                        "assets/gif/loading.gif",
+                                        width: 100,
+                                        height: 100,
+                                      ),
+                                      color: Colors.grey[300],
+                                    );
+                                    webViewStore.setAddedNewUrl(true);
+                                    webViewStore
+                                        .setPrevUrl("http://meez.shop/");
+                                    webViewStore.setLoadingUrl(true);
+                                    webViewStore.changeUrl(fcmMessage.url);
+                                    webViewStore.webView
+                                        .loadUrl(url: fcmMessage.url);
+                                    Navigator.pop(context, false);
+                                    /*Navigator.pushNamed(
                                   context, Routes.newUrlPages,arguments:fcmMessage.url);
-                       */     },
-                          ),
-                        ),
-                        fcmMessage.type!="URL"?Container():  SizedBox(
-                          width: 2.0,
-                        ),
+                       */
+                                  },
+                                ),
+                              ),
+                        fcmMessage.type != "URL"
+                            ? Container()
+                            : SizedBox(
+                                width: 2.0,
+                              ),
                         Container(
                           width: MediaQuery.of(context).size.width / 4.3,
                           child: FlatButton(

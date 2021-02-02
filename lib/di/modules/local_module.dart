@@ -78,11 +78,11 @@ class LocalModule extends NetworkModule {
   @provide
   @singleton
   Repository provideRepository(
-      IntroApi introApi,
-    SharedPreferenceHelper preferenceHelper,
-    PostDataSource postDataSource,
-    CheckInternet checkInternet,
-    FirebaseHelper firebaseHelper
-  ) =>
-      Repository(introApi, preferenceHelper, postDataSource,checkInternet,firebaseHelper);
+          IntroApi introApi,
+          SharedPreferenceHelper preferenceHelper,
+          PostDataSource postDataSource,
+          CheckInternet checkInternet,
+          FirebaseHelper firebaseHelper) =>
+      Repository(introApi, preferenceHelper, postDataSource, checkInternet,
+          firebaseHelper);
 }

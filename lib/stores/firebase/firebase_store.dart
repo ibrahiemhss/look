@@ -1,10 +1,9 @@
-
 import 'package:flutter/cupertino.dart';
-import 'package:look/services/notifications_service.dart';
-import 'package:mobx/mobx.dart';
 import 'package:look/data/repository.dart';
 import 'package:look/models/notifications/fcm_notification_model.dart';
+import 'package:look/services/notifications_service.dart';
 import 'package:look/stores/error/error_store.dart';
+import 'package:mobx/mobx.dart';
 
 part 'firebase_store.g.dart';
 
@@ -22,15 +21,14 @@ abstract class _FirebaseStore with Store {
 
   // store variables:-----------------------------------------------------------
   static ObservableFuture<FcmMessage> emptyMessageResponse =
-  ObservableFuture.value(null);
+      ObservableFuture.value(null);
 
   @observable
   ObservableFuture<FcmMessage> fetchMessageFuture =
-  ObservableFuture<FcmMessage>(emptyMessageResponse);
+      ObservableFuture<FcmMessage>(emptyMessageResponse);
 
   @observable
   FcmMessage _fcmMessage;
-
 
   @computed
   bool get loading => fetchMessageFuture.status == FutureStatus.pending;
@@ -40,8 +38,10 @@ abstract class _FirebaseStore with Store {
   FcmMessage get fcmMessage => _fcmMessage;
 
   @action
-  Future getMessage(BuildContext context,NotificationsService notificationsService) async {
-    final future = _repository.getFcmMessagingConfiguration(context,notificationsService);
+  Future getMessage(
+      BuildContext context, NotificationsService notificationsService) async {
+    final future =
+        _repository.getFcmMessagingConfiguration(context, notificationsService);
     fetchMessageFuture = ObservableFuture(future);
 
     future.then((message) {

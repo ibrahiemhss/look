@@ -1,7 +1,7 @@
 class FontFamily {
   FontFamily._();
 
- // static String productSans = "ProductSans";
+// static String productSans = "ProductSans";
 //  static String roboto = "Roboto";
- // static String GESSTwo = "GEDinarTwo";
+// static String GESSTwo = "GEDinarTwo";
 }

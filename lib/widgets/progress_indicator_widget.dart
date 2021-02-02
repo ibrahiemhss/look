@@ -18,7 +18,7 @@ class CustomProgressIndicatorWidget extends StatelessWidget {
             height: 100,
             width: 100,
             child: Card(
-                color: Colors.white.withOpacity(0.0),
+              color: Colors.white.withOpacity(0.0),
               child: Padding(
                 padding: const EdgeInsets.all(25.0),
                 child: CircularProgressIndicator(),
@@ -28,7 +28,9 @@ class CustomProgressIndicatorWidget extends StatelessWidget {
             ),
           ),
         ),
-        decoration: BoxDecoration(color: Colors.white.withOpacity(0.0),),
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.0),
+        ),
       ),
     );
   }

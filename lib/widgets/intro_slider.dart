@@ -558,7 +558,8 @@ class IntroSliderState extends State<IntroSlider>
       child: renderDoneBtn,
       color: colorDoneBtn,
       highlightColor: highlightColorDoneBtn,
-      shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(borderRadiusDoneBtn)),
+      shape: new RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(borderRadiusDoneBtn)),
     );
   }
 
@@ -597,7 +598,6 @@ class IntroSliderState extends State<IntroSlider>
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-
           Flexible(
             child: isShowDotIndicator
                 ? Row(
@@ -726,75 +726,75 @@ class IntroSliderState extends State<IntroSlider>
       child: Container(
         margin: EdgeInsets.only(bottom: 60.0),
         child: ListView(
-           children: <Widget>[
-             Padding(
-               padding: const EdgeInsets.all(8.0),
-               child: Container(
-                 child: Align(
-                   alignment: Alignment.centerLeft,
-                   child: Container(
-                   height: 96,
-                   width: 96,
-                     child:  SvgPicture.asset(
-                           Assets.logo_svg
-                       )
-                 )
-                 ),
-               ),
-             ),
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                        height: 96,
+                        width: 96,
+                        child: SvgPicture.asset(Assets.logo_svg))),
+              ),
+            ),
 
-            title==""||title==null?Container():Container(
-              // Title
-              child: Text(
-                title ?? "",
-                style: styleTitle ??
-                    TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
+            title == "" || title == null
+                ? Container()
+                : Container(
+                    // Title
+                    child: Text(
+                      title ?? "",
+                      style: styleTitle ??
+                          TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
+                      maxLines: maxLineTitle != null ? maxLineTitle : 1,
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                maxLines: maxLineTitle != null ? maxLineTitle : 1,
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.ellipsis,
-              ),
-              margin: marginTitle ??
-                  EdgeInsets.only(
-                      top: 8.0, bottom: 4.0, left: 4.0, right: 4.0),
-            ),
-            subTitle==""||subTitle==null?Container():Container(
-              // subTitle
-              child: Text(
-                subTitle ?? "",
-                style: stylesubTitle ??
-                    TextStyle(
-                      color: Color(0xff512DA8),
-                      fontWeight: FontWeight.normal,
-                      fontSize: 14.0,
+                    margin: marginTitle ??
+                        EdgeInsets.only(
+                            top: 8.0, bottom: 4.0, left: 4.0, right: 4.0),
+                  ),
+            subTitle == "" || subTitle == null
+                ? Container()
+                : Container(
+                    // subTitle
+                    child: Text(
+                      subTitle ?? "",
+                      style: stylesubTitle ??
+                          TextStyle(
+                            color: Color(0xff512DA8),
+                            fontWeight: FontWeight.normal,
+                            fontSize: 14.0,
+                          ),
+                      maxLines: maxLinesubTitle != null ? maxLinesubTitle : 1,
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                maxLines: maxLinesubTitle != null ? maxLinesubTitle : 1,
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.ellipsis,
-              ),
-              margin: marginsubTitle ??
-                  EdgeInsets.only(
-                      top: 8.0, left: 4.0, right: 30.0),
-            ),
+                    margin: marginsubTitle ??
+                        EdgeInsets.only(top: 8.0, left: 4.0, right: 30.0),
+                  ),
 
             // Image or Center widget
-             Container(
-               height: 200,
-                 width: 200,
-                 child: centerWidget??Container()),
+            Container(
+                height: 200, width: 200, child: centerWidget ?? Container()),
 
             // Description
             Container(
               child: Padding(
-                padding: const EdgeInsets.only(
-                    top: 16.0, left: 4.0, right: 4.0),
+                padding:
+                    const EdgeInsets.only(top: 16.0, left: 4.0, right: 4.0),
                 child: Text(
                   description ?? "",
-                  style:
-                      TextStyle(color: Colors.white, fontSize: 18.0,fontWeight: FontWeight.bold,fontFamily: 'RobotoMono'),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'RobotoMono'),
                   textAlign: TextAlign.center,
                   maxLines: maxLineTextDescription != null
                       ? maxLineTextDescription
@@ -852,6 +852,7 @@ class Slide {
   int maxLinesubTitle;
   TextStyle stylesubTitle;
   EdgeInsets marginsubTitle;
+
   // Image
   /// Path to your local image
   String pathImage;

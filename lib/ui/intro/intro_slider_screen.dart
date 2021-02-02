@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:look/constants/app_theme.dart';
 import 'package:look/stores/intro/intro_store.dart';
 import 'package:look/ui/main/main_screen.dart';
 import 'package:look/widgets/intro_slider.dart';
 import 'package:look/widgets/progress_indicator_widget.dart';
 import 'package:provider/provider.dart';
+
 class IntroScreen extends StatefulWidget {
   IntroScreen({Key key}) : super(key: key);
 
@@ -25,14 +25,13 @@ class _IntroScreenState extends State<IntroScreen> {
     if (!_introStore.loading) {
       _introStore.getInter();
       _introStore.getIntroData();
-
     }
   }
 
   @override
   void initState() {
     super.initState();
-  /*  slides.add(
+    /*  slides.add(
       new Slide(
         title: "الشاشه الثالثه",
         styleTitle:
@@ -71,7 +70,7 @@ class _IntroScreenState extends State<IntroScreen> {
   }
 
   void onDonePress() {
-   _introStore.setFirstInter(false);
+    _introStore.setFirstInter(false);
   }
 
   void onSkipPress() {
@@ -88,8 +87,10 @@ class _IntroScreenState extends State<IntroScreen> {
 
   Widget renderDoneBtn() {
     return Text("تصفح التطبيق",
-        style: TextStyle(color:Color(0xFF21B6C9),));
-   /* return Icon(
+        style: TextStyle(
+          color: Color(0xFF21B6C9),
+        ));
+    /* return Icon(
       Icons.done,
       color: Color(0xffFFFFFF),
     );*/
@@ -107,33 +108,31 @@ class _IntroScreenState extends State<IntroScreen> {
     return Observer(
         name: 'global-observer',
         builder: (context) {
-          return
-            !_introStore.firstEnter?
-          MainPagesScreen():
-          _introStore.loading
-              ? CustomProgressIndicatorWidget()
-              : new IntroSlider(
-            // List slides
-            slides: _introStore.slides,
-            // Skip button
-            renderSkipBtn: this.renderSkipBtn(),
-            onSkipPress: this.onSkipPress,
-            colorSkipBtn: Colors.white,
-            highlightColorSkipBtn: Color(0xff000000),
+          return !_introStore.firstEnter
+              ? MainPagesScreen()
+              : _introStore.loading
+                  ? CustomProgressIndicatorWidget()
+                  : new IntroSlider(
+                      // List slides
+                      slides: _introStore.slides,
+                      // Skip button
+                      renderSkipBtn: this.renderSkipBtn(),
+                      onSkipPress: this.onSkipPress,
+                      colorSkipBtn: Colors.white,
+                      highlightColorSkipBtn: Color(0xff000000),
 
-            // Next, Done button
-            onDonePress: this.onDonePress,
-            renderNextBtn: this.renderNextBtn(),
-            renderDoneBtn: this.renderDoneBtn(),
-            colorDoneBtn: Colors.white,
-            highlightColorDoneBtn: Color(0xff000000),
+                      // Next, Done button
+                      onDonePress: this.onDonePress,
+                      renderNextBtn: this.renderNextBtn(),
+                      renderDoneBtn: this.renderDoneBtn(),
+                      colorDoneBtn: Colors.white,
+                      highlightColorDoneBtn: Color(0xff000000),
 
-            // Dot indicator
-            colorDot:Colors.white,
-            colorActiveDot: Colors.orange,
-            sizeDot: 13.0,
-          );
-        }
-    );
+                      // Dot indicator
+                      colorDot: Colors.white,
+                      colorActiveDot: Colors.orange,
+                      sizeDot: 13.0,
+                    );
+        });
   }
 }

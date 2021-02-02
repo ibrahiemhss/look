@@ -5,10 +5,8 @@ import 'package:look/data/local/datasources/post/post_datasource.dart';
 import 'package:look/data/network/apis/intro/intro_api.dart';
 import 'package:look/data/sharedpref/shared_preference_helper.dart';
 import 'package:look/models/intro/data_list.dart';
-import 'package:look/models/intro/intro_data.dart';
 import 'package:look/models/notifications/fcm_notification_model.dart';
 import 'package:look/models/post/post.dart';
-import 'package:look/models/post/post_list.dart';
 import 'package:look/services/notifications_service.dart';
 import 'package:sembast/sembast.dart';
 
@@ -23,6 +21,7 @@ class Repository {
   // api objects
   final IntroApi _introApi;
   final CheckInternet _checkInternet;
+
   // shared pref object
   final SharedPreferenceHelper _sharedPrefsHelper;
 
@@ -30,16 +29,20 @@ class Repository {
   final FirebaseHelper _firebaseHelper;
 
   // constructor
-  Repository(this._introApi, this._sharedPrefsHelper, this._postDataSource, this._checkInternet,this._firebaseHelper);
+  Repository(this._introApi, this._sharedPrefsHelper, this._postDataSource,
+      this._checkInternet, this._firebaseHelper);
 
   // Post: ---------------------------------------------------------------------
-  Future<bool> isInternetConnected() async{
+  Future<bool> isInternetConnected() async {
     return await _checkInternet.isConnected();
   }
 
   // Url:------------------------------------------------------
-  Future<FcmMessage> getFcmMessagingConfiguration(BuildContext context,NotificationsService notificationsService) async {
-    return await _firebaseHelper.config(context,notificationsService).catchError((error) => throw error);
+  Future<FcmMessage> getFcmMessagingConfiguration(
+      BuildContext context, NotificationsService notificationsService) async {
+    return await _firebaseHelper
+        .config(context, notificationsService)
+        .catchError((error) => throw error);
   }
 
   // Intro data: ---------------------------------------------------------------------
@@ -47,9 +50,8 @@ class Repository {
     // check to see if posts are present in database, then fetch from database
     // else make a network call to get all posts, store them into database for
     // later use
-    return  await _introApi.getIntroData().catchError((error) => throw error);
+    return await _introApi.getIntroData().catchError((error) => throw error);
   }
-
 
   Future<List<Post>> findPostById(int id) {
     //creating filter
@@ -86,6 +88,7 @@ class Repository {
   // Language: -----------------------------------------------------------------
   Future<void> setFirstInter(bool value) =>
       _sharedPrefsHelper.setFirstInter(value);
+
   Future<bool> get isFirstInter => _sharedPrefsHelper.isFirstInter;
 
   // page title: -----------------------------------------------------------------
@@ -112,5 +115,4 @@ class Repository {
   }
 
   Future<String> get getUrl => _sharedPrefsHelper.currentUrl;
-
 }
